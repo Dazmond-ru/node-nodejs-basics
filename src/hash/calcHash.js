@@ -4,21 +4,21 @@ import url from 'node:url'
 import crypto from 'node:crypto'
 
 const calculateHash = async () => {
-  const __filename = url.fileURLToPath(import.meta.url)
-  const __dirname = path.dirname(__filename)
+    const __filename = url.fileURLToPath(import.meta.url)
+    const __dirname = path.dirname(__filename)
 
-  const fileToRead = path.join(__dirname, 'files', 'fileToCalculateHashFor.txt')
+    const fileToRead = path.join(__dirname, 'files', 'fileToCalculateHashFor.txt')
 
-  try {
-    const data = await fs.promises.readFile(fileToRead)
-    const hash = crypto.createHash('sha256')
-    hash.update(data)
+    try {
+        const data = await fs.promises.readFile(fileToRead)
+        const hash = crypto.createHash('sha256')
+        hash.update(data)
 
-    const hexHash = hash.digest('hex')
-    console.log(hexHash)
-  } catch (error) {
-    throw new Error(err)
-  }
+        const hexHash = hash.digest('hex')
+        console.log(hexHash)
+    } catch (error) {
+        throw new Error(err)
+    }
 }
 
 await calculateHash()
